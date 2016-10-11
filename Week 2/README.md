@@ -16,7 +16,7 @@ For Windows, after installation, there are some additional configuration steps.
 
 ### 1. Our Web App Starter
 
-To simplify development for future workshops, we have made a webapp starter available for your use. This includes an Express server with most of the basic middleware included to get started quickly with a web application. The folder structure looks like this:
+To simplify development for future workshops, we have made a webapp starter available for your use available [here](https://github.com/rutgers/Intelligent-Sensor-Networks/tree/master/Webapp-Base). This includes an Express server with most of the basic middleware included to get started quickly with a web application. The folder structure looks like this:
 
 ```
 client/                 # All our front end code goes here
