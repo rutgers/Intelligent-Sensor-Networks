@@ -1,0 +1,51 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h1 class="text-center">Grocery List</h1>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="item in $ctrl.groceryList">
+                        <ul class="list-inline">
+                            <li>
+                                <h5>{{item.name}} ({{item.quantity}})</h5>
+                            </li>
+                            <li class="pull-right">
+                                <button class="btn btn-primary" ng-click="$ctrl.openEdit(item, $index)">Edit</button>
+                                <button class="btn btn-warning" ng-click="$ctrl.deleteGroceryItem(item, $index)">Delete</button>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="panel-footer text-center" ng-hide="$ctrl.isEditing">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label>Item name: </label>
+                            <input class="form-control"type="text" placeholder="Grocery item" ng-model="$ctrl.item.name">
+                        </div>
+                        <div class="form-group">
+                            <label>Quantity: </label>
+                            <input class="form-control"type="number" placeholder="Quantity" ng-model="$ctrl.item.quantity">
+                        </div>
+                        <button type="submit" class="btn btn-default" ng-click="$ctrl.addGroceryItem()">Add grocery item</button>
+                    </form>
+                </div>
+                <div class="panel-footer text-center" ng-show="$ctrl.isEditing">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label>Item name: </label>
+                            <input class="form-control"type="text" placeholder="Grocery item" ng-model="$ctrl.editedItem.name">
+                        </div>
+                        <div class="form-group">
+                            <label>Quantity: </label>
+                            <input class="form-control"type="number" placeholder="Quantity" ng-model="$ctrl.editedItem.quantity">
+                        </div>
+                        <button type="submit" class="btn btn-primary" ng-click="$ctrl.editGroceryItem($ctrl.editedItem)">Edit grocery item</button>
+                        <button class="btn btn-danger" ng-click="$ctrl.closeEdit()">Close</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
