@@ -27,7 +27,7 @@ function randomNumber(req, res, next) {
 function errorHandler(err, req, res, next) {
     console.log(err);
     //Set HTTP status as well as message
-    res.status(500).send("Something blew up!");
+    //res.status(500).send("Something blew up!");
 }
 
 app.use(requestTime);

@@ -2,24 +2,24 @@
 //Author: Rutgers ISN Team
 
 //Allows parsing of HTTP request bodies
-const bodyParser = require("body-parser");
+var bodyParser = require("body-parser");
 //Web framework for node that simplifies development of web apps
-const express = require("express");
+var express = require("express");
 //Simulate DELETE and PUT HTTP requests
-const methodOverride = require("method-override");
+var methodOverride = require("method-override");
 //Provides MongoDB object modeling (makes DB interactions easier)
-const mongoose = require("mongoose");
+//var mongoose = require("mongoose");
 //Logs HTTP requests to the console
-const morgan = require("morgan");
+var morgan = require("morgan");
 
 //Load in routes
-const routes = require("./routes/routes");
+//var routes = require("./routes/routes");
 
 //Initialize express application
-const app = express();
+var app = express();
 
 //Connect to our MongoDB instance
-mongoose.connect("mongodb://localhost:27017");
+//mongoose.connect("mongodb://localhost:27017");
 
 //Set up middleware for application
 //Set up static files to be served
@@ -33,19 +33,19 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 
 //Add routes to our application
-app.use("/api", routes);
+//app.use("/api", routes);
 
 //Send index.html when hitting frontpage
-app.get("/", (req, res) => {
+app.get("/", function(req, res) {
     res.sendFile("index.html");
 });
 
 //If running server on different environment, use configured environment's port.
 //Otherwise, use 8080
-const port = process.env.PORT || 8080;
+var port = process.env.PORT || 8080;
 
 //Listen for connections on port
-app.listen(port, (err) => {
+app.listen(port, function(err) {
     if (err) console.log("Error: " + err);
 
     console.log("Server currently listening on port " + port + "!");

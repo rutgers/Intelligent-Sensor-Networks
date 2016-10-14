@@ -1,20 +1,20 @@
 //routes.js
 //Author: Rutgers ISN Team
 
-const express = require("express");
-const mongoose = require("mongoose");
+var express = require("express");
+var mongoose = require("mongoose");
 
 //Get GroceryItem model
-const GroceryItem = require("../models/grocery-item");
+var GroceryItem = require("../models/grocery-item");
 
 //Set up express router
-const router = express.Router();
+var router = express.Router();
 
 
 //GET request - get list of all grocery items
-router.get("/grocery-items", (req, res) => {
+router.get("/grocery-items", function(req, res) {
     //Use mongoose to find all grocery items
-    GroceryItem.find((err, items) => {
+    GroceryItem.find(function(err, items) {
         //Send error if present
         if (err) res.send(err);
 
@@ -24,16 +24,16 @@ router.get("/grocery-items", (req, res) => {
 });
 
 //POST request - add new grocery items
-router.post("/grocery-items", (req, res) => {
+router.post("/grocery-items", function (req, res) {
     //Make object from item POSTed
-    let postItem = {
+    var postItem = {
         name: req.body.name,
         quantity: req.body.quantity
     };
 
     console.log(req.body);
     //Create entry in DB
-    GroceryItem.create(postItem, (err, item) => {
+    GroceryItem.create(postItem, function(err, item) {
         if (err) res.send(err);
 
         //Return newly created item as json
@@ -42,20 +42,20 @@ router.post("/grocery-items", (req, res) => {
 });
 
 //PUT request - update grocery item
-router.put("/grocery-items/:id", (req, res) => {
+router.put("/grocery-items/:id", function(req, res) {
     //Make object from item PUTed
-    let putItem = {
+    var putItem = {
         item: req.body.item,
         quantity: req.body.quantity
     };
 
     //Make id object to hold ID of item
-    let id = {
+    var id = {
         _id: req.params.id
     };
 
     //Update entry in DB
-    GroceryItem.update(id, putItem, (err, item) => {
+    GroceryItem.update(id, putItem, function(err, item) {
         if (err) res.send(err);
 
         res.json(item);
@@ -63,14 +63,14 @@ router.put("/grocery-items/:id", (req, res) => {
 });
 
 //DELETE request - delete grocery item
-router.delete("/grocery-items/:id", (req, res) => {
+router.delete("/grocery-items/:id", function(req, res) {
     //Make id object to hold ID of item
-    let id = {
+    var id = {
         _id: req.params.id
     };
 
     //Remove entry in DB
-    GroceryItem.remove(id, (err, item) => {
+    GroceryItem.remove(id, function(err, item)  {
         if (err) res.send(err);
 
         //Return newly deleted item as json
