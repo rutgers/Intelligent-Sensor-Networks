@@ -10,6 +10,8 @@ We need to install the `t2-cli` command line utility to interface with the Tesse
 
 To test your installation, type `t2 version` to ensure the command line utility is installed. Don't worry if it states "No Authorized Tessels Found". We haven't connected the Tessel yet! We just wanted to check if it installed successfully.
 
+If you are having problems running `sudo t2 install drivers` on Linux, try out the suggestions here (thanks to Mike for pointing this out!):
+
 http://stackoverflow.com/questions/12996397/command-not-found-when-using-sudo
 
 ### 1. Installation
